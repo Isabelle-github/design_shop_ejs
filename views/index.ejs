@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= myPageTitle %>
+    </title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="/">THE DESIGN SHOP</a>
+            <a href="/">Weekly Recommandations</a>
+            <a href="/">Less than 30$</a>
+            <a href="/add">Add</a>
+        </nav>
+        <h1>Home</h1>
+    </header>
+    <main>
+        <section id="home_Main">
+            <% dataFound.forEach(obj=> { %>
+                <article>
+                    <figure>
+                        <a href=<%=obj.LinkShop%> target=_blank><img src=<%=obj.ProductLink%> alt="img"></a>
+                        <figcaption>
+                            <p>
+                                <%=obj.ProductName%>
+                            </p>
+                            <p>
+                                <%=obj.Company%>
+                            </p>
+                            <p>
+                                <%=obj.Price%>$
+                            </p>
+                        </figcaption>
+                    </figure>
+                </article>
+                <% }) %>
+        </section>
+    </main>
+
+</body>
+
+</html>
