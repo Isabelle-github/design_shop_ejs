@@ -49,8 +49,11 @@ body main #home_Main article figure a img {
      object-fit: contain;
 }
 
-/* FORM */
-form {
+body main #addItem {
+  /* eyes */
+}
+
+body main #addItem form {
   width: 70%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -62,24 +65,23 @@ form {
   margin: 2em auto;
 }
 
-form input {
+body main #addItem form input {
   padding: 1em;
 }
 
-form input:last-of-type {
+body main #addItem form input:last-of-type {
   color: var(--white-color);
   padding: 1em;
   background-color: var(--black-color);
 }
 
-/* eyes */
-.line {
+body main #addItem .line {
   margin-top: 4em;
   border-top: solid 2px var(--black-color);
   position: relative;
 }
 
-.eye1, .eye2 {
+body main #addItem .line .eye1, body main #addItem .line .eye2 {
   position: absolute;
   display: inline-block;
   border-radius: 50%;
@@ -91,11 +93,11 @@ form input:last-of-type {
   border: solid 1px var(--black-color);
 }
 
-.eye2 {
+body main #addItem .line .eye2 {
   left: 52.5%;
 }
 
-.eye1:after, .eye2::after {
+body main #addItem .line .eye1:after, body main #addItem .line .eye2::after {
   /*pupil*/
   position: absolute;
   right: 3px;
@@ -106,4 +108,25 @@ form input:last-of-type {
   border-radius: 50%;
   content: " ";
 }
+
+body main #random {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
+  padding: 5em;
+  gap: 3em;
+}
+
+body main #random article {
+  padding: 2em;
+}
+
+body main #random article figure a img {
+  width: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+/* FORM */
 /*# sourceMappingURL=style.css.map */

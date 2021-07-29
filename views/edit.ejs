@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= myPageTitle %>
+    </title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="/">THE DESIGN SHOP</a>
+            <a href="/">Weekly Recommandations</a>
+            <a href="/cheap">Less than 30$</a>
+            <a href="/addItem">Add</a>
+        </nav>
+    </header>
+    <main>
+        <section id="home_Main">
+            <article>
+
+                <figure>
+                    <a href=<%=objFound.LinkShop%> target=_blank><img src=<%=objFound.ProductLink%>
+                        alt="img"></a>
+                    <figcaption>
+                        <p>
+                            <%=objFound.ProductName%>
+                        </p>
+                        <p>
+                            <%=objFound.Company%>
+                        </p>
+                        <p>
+                            <%=objFound.Price%>$
+                        </p>
+                        <a href=<%=objFound.LinkShop%> target=_blank>BUY NOW</a>
+                    </figcaption>
+                </figure>
+            </article>
+
+        </section>
+        <section id="addItem">
+            <h1>EDIT PRODUCT</h1>
+            <form action="/index/<%=objFound._id%>/edit" method="POST">
+                <input type="text" name='ProductName' placeholder="Product Name" required
+                    value=<%=objFound.ProductName%>>
+                <input type="url" name='ProductLink' placeholder="URL Picture for Article" required
+                    value=<%=objFound.ProductLink%> >
+                <input type="text" name='Company' placeholder="Company" required value=<%=objFound.Company%> >
+                <input type="number" name='Price' placeholder="Price" required value=<%=objFound.Price%>>
+                <input type="message" name='LinkShop' placeholder="Shop Link" required value=<%=objFound.LinkShop%>>
+                <input type="submit" value="SEND ARTICLE">
+            </form>
+        </section>
+    </main>
+
+</body>
+
+</html>

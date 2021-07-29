@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= myPageTitle %>
+    </title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="/">THE DESIGN SHOP</a>
+            <a href="/">Weekly Recommandations</a>
+            <a href="/cheap">Less than 30$</a>
+            <a href="/addItem">Add</a>
+        </nav>
+    </header>
+    <main>
+        <section id="home_Main">
+            <article>
+                <a href='/index/<%=objFound._id%>/edit'>Edit</a>
+                <a href='/index/<%=objFound._id%>/delete'>Delete</a>
+                <figure>
+                    <a href=<%=objFound.LinkShop%> target=_blank><img src=<%=objFound.ProductLink%>
+                        alt="img"></a>
+                    <figcaption>
+                        <p>
+                            <%=objFound.ProductName%>
+                        </p>
+                        <p>
+                            <%=objFound.Company%>
+                        </p>
+                        <p>
+                            <%=objFound.Price%>$
+                        </p>
+                        <a href=<%=objFound.LinkShop%> target=_blank>BUY NOW</a>
+                    </figcaption>
+                </figure>
+            </article>
+
+        </section>
+    </main>
+
+</body>
+
+</html>

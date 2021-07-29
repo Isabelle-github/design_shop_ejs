@@ -64,50 +64,78 @@ app.post('/add', (req, res) => {
 })
 
 app.get('/cheap', (req, res) => {
-    Shop_Article.find()
+    Shop_Article.find({ "Price": { $lt: 30 } })
         .then((result) => {
             console.log(result)
-            res.render('/', { myPageTitle: `${appName}|HOME`, dataFound: result })
+            res.render('index', { myPageTitle: `${appName}|CHEAP ARTICLES`, dataFound: result })
         })
         .catch((err) => {
             console.log(err)
         })
 })
-app.get('/add', (req, res) => {
-    Shop_Article.find()
+app.get('/addItem', (req, res) => {
+    Shop_Article.aggregate([{ $sample: { size: 6 } }])
         .then((result) => {
             console.log(result)
-            res.render('/add', { myPageTitle: `${appName}|ADD ARTICLE`, dataFound: result })
+            res.render('addItem', { myPageTitle: `${appName}|ADD ARTICLE`, dataFound: result })
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+    // res.render('add', { myPageTitle: `${appName}|ADD ARTICLE`, dataFound: result })
+})
+app.get('/index/:id', (req, res) => {
+    console.log(req.params)
+    Shop_Article.findById(req.params.id)
+        .then((result) => {
+            console.log(result)
+            res.render('detail', { myPageTitle: `${appName}|PRODUCT DETAILS`, objFound: result })
         })
         .catch((err) => {
             console.log(err)
         })
 })
+app.get('/index/:id/edit', (req, res) => {
+    console.log(req.params.id)
+    Shop_Article.findById(req.params.id)
+        .then((result) => {
+            console.log(result)
+            res.render('edit', { myPageTitle: `${appName}|EDIT`, objFound: result })
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+})
+app.post('/index/:id/edit', (req, res) => {
+    console.log(req.params.id)
+    // const updatedContact = {
+    //     firstName: req.body.firstName,
+    //     lastName: req.body.lastName,
+    //     email: req.body.email,
+    //     age: req.body.age
+    // }
+    // Contact.findByIdAndUpdate(req.params.id, updatedContact)
 
-// app.get('/ginMenu', (req, res) => {
-//     fetch(`http://www.thecocktaildb.com/api/json/v1/1/filter.php?i=Gin`)
-//         .then(result => result.json())
-//         .then(data => {
-//             console.log(data)
-//             res.end()
-//         });
-// })
-
-// app.post('/', (req, res) => {
-//     console.log(req.body)
-//     dataArticle.push({
-//         id: dataArticle.length,
-//         url: req.body.urlPicture,
-//         title: req.body.title,
-//         body: req.body.text,
-//         published_at: currentDay,
-//         author: req.body.author,
-//         author_bild: req.body.authorPic
-//     })
-//     console.log(dataArticle)
-//     fileSyst.writeFile('./data.json', JSON.stringify(dataArticle), 'utf8', (err) => {
-//         if (err) throw err
-//     })
-//     res.redirect('/newArticle')
-// })
+    Shop_Article.findByIdAndUpdate(req.params.id, req.body)
+        .then((result) => {
+            console.log(result)
+            res.render('detail', { myPageTitle: `${appName}|PRODUCT DETAILS`, objFound: result })
+        })
+        .catch((err) => {
+            console.log(err)
+            res.send(err)
+        })
+})
+app.get('/index/:id/delete', (req, res) => {
+    console.log(req.params.id)
+    Shop_Article.findByIdAndDelete(req.params.id)
+        .then((result) => {
+            console.log(result)
+            res.redirect('/')
+        })
+        .catch((err) => {
+            console.log(err)
+            res.send(err)
+        })
+})
 

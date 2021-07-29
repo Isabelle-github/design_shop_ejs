@@ -16,17 +16,18 @@
         <nav>
             <a href="/">THE DESIGN SHOP</a>
             <a href="/">Weekly Recommandations</a>
-            <a href="/">Less than 30$</a>
-            <a href="/add">Add</a>
+            <a href="/cheap">Less than 30$</a>
+            <a href="/addItem">Add</a>
         </nav>
-        <h1>Home</h1>
+
     </header>
     <main>
         <section id="home_Main">
             <% dataFound.forEach(obj=> { %>
                 <article>
+
                     <figure>
-                        <a href=<%=obj.LinkShop%> target=_blank><img src=<%=obj.ProductLink%> alt="img"></a>
+                        <a href='/index/<%=obj._id%>'><img src=<%=obj.ProductLink%> alt="img"></a>
                         <figcaption>
                             <p>
                                 <%=obj.ProductName%>
