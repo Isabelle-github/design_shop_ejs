@@ -41,7 +41,7 @@
             <% dataFound.forEach(obj=> { %>
                 <article>
                     <figure>
-                        <a href=<%=obj.LinkShop%> target=_blank><img src=<%=obj.ProductLink%> alt="img"></a>
+                        <a href='/index/<%=obj._id%>'><img src=<%=obj.ProductLink%> alt="img"></a>
                         <figcaption>
                             <p>
                                 <%=obj.ProductName%>
